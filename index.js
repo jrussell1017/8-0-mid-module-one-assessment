@@ -26,7 +26,17 @@ const animals = [
  * getTotalCount(animals); //> 28
  * getTotalCount([]); //> 0 // returns 0 if the input array is empty
  */
-function getTotalCount(animals) {}
+function getTotalCount(animals) {
+  // set total to 0 so we can add to it 
+  let totalCount = 0   // step 1 inputs
+
+  for(let i = 0; i < animals.length; i++) {    // step 2 define my loop
+    // add the animal count being looked at to total 
+      totalCount += animals[i].count      // step 3 accum
+  }
+  // return total
+  return totalCount // step 1 outputs
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -40,8 +50,18 @@ function getTotalCount(animals) {}
  * getAllKinds(animals); //> ["Pig", "Cow", "Chicken", "Horse", "Dog", "Cat"]
  * getAllKinds([]); //> [] // returns empty array if input array is empty
  */
-function getAllKinds(animals) {}
+function getAllKinds(animals) {
+  // set to empty array to add to it
+  let allAnimals = []    // step 1 inputs
+  for(let i = 0; i < animals.length; i++) {    // step 2 define my loop
+    // push each "kind" of animal to the array
+    allAnimals.push(animals[i].kind)           // step 3 acc
+  }
+  // return all animal kinds pushed
+  return allAnimals // step 1 outputs
+}
 
+console.log(getAllKinds(animals))
 /**
  * FUNCTION DESCRIPTION
  * ------------------
@@ -59,8 +79,19 @@ function getAllKinds(animals) {}
   ];
  * filterByCountMinimum([], 3); //> [] // returns empty array if input array is empty
  */
-function filterByCountMinimum(animals, minimum) {}
-
+function filterByCountMinimum(animals, minimum) {
+  // set new array so that you can add to it
+  let newArr = []       // step 1  inputs
+  for(let i = 0; i < animals.length; i++) {  // define my loop
+    // if the count of animal is greater or the same as the input
+    //push that animal object into the array
+    if(animals[i].count >= minimum) {    // accum
+      newArr.push(animals[i]);
+    }
+  }
+  return newArr // step 1 outputs
+}
+console.log(filterByCountMinimum(animals, 5))
 /**
  * FUNCTION DESCRIPTION
  * ------------------
@@ -73,8 +104,28 @@ function filterByCountMinimum(animals, minimum) {}
  * getMostCommonAnimal(animals); //> { kind: "Chicken", count: 11 }
  * getMostCommonAnimal([]); //> null // returns null if the input is empty
  */
-function getMostCommonAnimal(animals) {}
+function getMostCommonAnimal(animals) {
+  // step 1 inputs
+  if(animals.length === 0) {     // accomodates for if nothing is input
+    return null
+  }
 
+  let highestCount = animals[0]        // declare the first animal in the array to compare and set as highest
+
+  for(let i = 1; i < animals.length; i++) {    // define my loop
+    // seting animal variable to the animal object 
+    let animal = animals[i]
+    // if the current count of animal being compared is larger than the current highest
+    // highest count take the the animal that it was compared to
+    if(animal.count > highestCount.count) {
+      highestCount = animal
+    }
+  }
+  return highestCount
+}
+
+
+console.log(getMostCommonAnimal(animals))
 // Do not change anything below this line.
 module.exports = {
   getTotalCount,
